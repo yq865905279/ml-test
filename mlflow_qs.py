@@ -18,11 +18,12 @@ X_train, X_test, y_train, y_test = train_test_split(
 
 # Define the model hyperparameters
 params = {
-    "solver": "lbfgs",
-    "max_iter": 1000,
-    "multi_class": "auto",
-    "random_state": 8888,
+    "solver": os.environ.get("solver", "lbfgs"),
+    "max_iter": int(os.environ.get("max_iter", 1000)),
+    "multi_class": os.environ.get("multi_class", "auto"),
+    "random_state": int(os.environ.get("random_state", 8888)),
 }
+
 
 # Train the model
 lr = LogisticRegression(**params)
@@ -36,7 +37,7 @@ accuracy = accuracy_score(y_test, y_pred)
 
 
 # Set our tracking server uri for logging
-mlflow.set_tracking_uri(uri="http://127.0.0.1:8080")
+mlflow.set_tracking_uri(uri="http://192.168.10.1:8080")
 
 # Create a new MLflow Experiment
 mlflow.set_experiment("MLflow Quickstart")
