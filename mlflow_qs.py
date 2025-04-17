@@ -1,5 +1,6 @@
 import mlflow
 from mlflow.models import infer_signature
+import os
 
 import pandas as pd
 from sklearn import datasets
