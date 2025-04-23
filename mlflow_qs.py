@@ -39,10 +39,6 @@ accuracy = accuracy_score(y_test, y_pred)
 
 # Set our tracking server uri for logging
 mlflow.set_tracking_uri(uri="http://192.168.10.1:8080")
-
-# Create a new MLflow Experiment
-mlflow.set_experiment("Local test")
-
 # Start an MLflow run
 with mlflow.start_run():
     # Log the hyperparameters
