@@ -20,7 +20,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Define the model hyperparameters
 params = {
     "solver": os.environ.get("solver", "lbfgs"),
-    "max_iter": int(os.environ.get("max_iter", 1000)),
+    "max_iter": int(os.environ.get("max_iter", 500)),
     "multi_class": os.environ.get("multi_class", "auto"),
     "random_state": int(os.environ.get("random_state", 8888)),
 }
@@ -41,7 +41,7 @@ accuracy = accuracy_score(y_test, y_pred)
 mlflow.set_tracking_uri(uri="http://192.168.10.1:8080")
 
 # Create a new MLflow Experiment
-mlflow.set_experiment("MLflow Tracking Job")
+mlflow.set_experiment("Local test")
 
 # Start an MLflow run
 with mlflow.start_run():
